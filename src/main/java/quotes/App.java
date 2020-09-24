@@ -3,12 +3,27 @@
  */
 package quotes;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
+
+
+    public static void main(String[] args) throws IOException {
+        Gson gson = new Gson();
+        RecentQuotes quotes = new RecentQuotes("Charles Dickens", "Hello?");
+        System.out.println(quotes);
+        Reader quoteReader = Files.newBufferedReader(Paths.get("src/main/resources/recentQuotes.json"));
+        RecentQuotes[] numQuotes = gson.fromJson(quoteReader, RecentQuotes[].class);
+        System.out.println(quotes.stringify(getRandomNumber(0, 138), numQuotes));
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    public static int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
+
 }
