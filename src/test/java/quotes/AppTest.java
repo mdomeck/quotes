@@ -14,10 +14,10 @@ import java.nio.file.Paths;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testRecentQuotesEmpty() {
-        RecentQuotes quotesTest = new RecentQuotes("", "");
-        assertEquals(" - ", quotesTest.toString());
-    }
+//    @Test public void testRecentQuotesEmpty() {
+//        RecentQuotes quotesTest = new RecentQuotes("", "");
+//        assertEquals(" - ", quotesTest.toString());
+//    }
 
     @Test public void testRecentQuotesOne() throws IOException {
         Gson gson = new Gson();
