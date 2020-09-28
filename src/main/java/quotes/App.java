@@ -18,16 +18,17 @@ public class App {
 
         URL url = new URL("http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote");
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
         int responseCode = connection.getResponseCode();
 
         if (responseCode != 200) {
 
             try {
                 Gson gson = new Gson();
-                RecentQuotes quotes = new RecentQuotes("Charles Dickens", "Hello?");
-                System.out.println(quotes);
+                //RecentQuotes quotes = new RecentQuotes("Charles Dickens", "Hello?");
+                //System.out.println(quotes);
                 Reader quoteReader = Files.newBufferedReader(Paths.get("src/main/resources/recentQuotes.json"));
                 RecentQuotes[] numQuotes = gson.fromJson(quoteReader, RecentQuotes[].class);
                 System.out.println(quotes.stringify(getRandomNumber(0, 138), numQuotes));
@@ -56,7 +57,7 @@ public class App {
 
                 Gson g = new Gson();
                 StarsWarsQuote q = g.fromJson(testing, StarsWarsQuote.class);
-
+                
                 System.out.println(q);
 
 

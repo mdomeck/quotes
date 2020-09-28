@@ -1,7 +1,7 @@
 ## quotes
 
 - Once you clone the repo...
-- run *gradle init --type java-application* in the terminal
+- `./gradlew run` in the terminal to run app
  
  #### dependencies
  - This dependency is used by the application.
