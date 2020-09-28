@@ -25,6 +25,8 @@ public class RecentQuotes {
         return text + " - " + author;
     }
 
-
+    public String getText(){
+        return this.text;
+    }
 
 }
