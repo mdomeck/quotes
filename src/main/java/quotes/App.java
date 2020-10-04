@@ -9,8 +9,11 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 
 
 public class App {
@@ -62,7 +65,6 @@ public class App {
                 }
                 input.close();
 
-
                 System.out.println(entireStringFromResponse);
                 String testing = String.valueOf(entireStringFromResponse);
 
@@ -71,15 +73,19 @@ public class App {
 
                 System.out.println(q);
 
-                // open recentQuotes
-                // append new Quote
-                // close recentQuotes
-
-                File infoFromInternet = new File("src/main/resources/InfoFromInternet.json");
+                File infoFromInternet = new File("src/main/resources/infoFromInternet.json");
                 infoFromInternet.createNewFile();
-                FileWriter infoFileWriter = new FileWriter("src/main/resources/infoFromInternet.json");
+                FileWriter infoFileWriter = new FileWriter("src/main/resources/InfoFromInternet.json", true);
                 g.toJson(q, infoFileWriter);
+//                while (oneLine != null) {
+//                    infoFileWriter.append(oneLine);
+//                    oneLine = input.readLine();
+//                }
                 infoFileWriter.close();
+
+//                BufferedWriter jsonWriter = new BufferedWriter(infoFileWriter);
+//                g.toJson(q, jsonWriter);
+//                jsonWriter.close();
 
             }
         } catch (Exception ex) {

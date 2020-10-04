@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 public class AppTest {
 //    @Test public void testRecentQuotesEmpty() {
-//        RecentQuotes quotesTest = new RecentQuotes("", "");
+//        RecentQuote quotesTest = new RecentQuote("", "");
 //        assertEquals(" - ", quotesTest.toString());
 //    }
 
@@ -29,12 +29,18 @@ public class AppTest {
         assertEquals("Marilyn Monroe - I am good, but not an angel. I do sin, but I am not the devil. I am just a small girl in a big world trying to find someone to love.", quotesTest.stringify(0, numQuotes));
     }
 
-//    @Test public void testRecentQuotesRandomNumber() {
-//        App quotesTest = new App();
+    @Test public void testRecentQuotesRandomNumber() {
+        App quotesTest = new App();
+
+        int min = 0;
+        int max = 138;
+        int random = quotesTest.getRandomNumber(min, max);
+        assertTrue("Error, random is too high", 139 >= random);
+    }
+
+//    @Test public void returnQuoteTest() throws Exception{
+//        App newQuoteTest = new App();
 //
-//        int min = 0;
-//        int max = 138;
-//        int random = quotesTest.getRandomNumber(min, max);
-//        assertTrue("Error, random is too high", 139 >= random);
+//
 //    }
 }
