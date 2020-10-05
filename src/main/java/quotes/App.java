@@ -61,7 +61,7 @@ public class App {
 
                 while (oneLine != null) {
                     entireStringFromResponse.append(oneLine);
-                    oneLine = input.readLine();
+                   oneLine = input.readLine();
                 }
                 input.close();
 
@@ -73,19 +73,11 @@ public class App {
 
                 System.out.println(q);
 
-                File infoFromInternet = new File("src/main/resources/infoFromInternet.json");
-                infoFromInternet.createNewFile();
-                FileWriter infoFileWriter = new FileWriter("src/main/resources/InfoFromInternet.json", true);
+
+                FileWriter infoFileWriter = new FileWriter("src/main/resources/recentQuotes.json", true);
                 g.toJson(q, infoFileWriter);
-//                while (oneLine != null) {
-//                    infoFileWriter.append(oneLine);
-//                    oneLine = input.readLine();
-//                }
                 infoFileWriter.close();
 
-//                BufferedWriter jsonWriter = new BufferedWriter(infoFileWriter);
-//                g.toJson(q, jsonWriter);
-//                jsonWriter.close();
 
             }
         } catch (Exception ex) {
