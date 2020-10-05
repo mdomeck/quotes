@@ -14,10 +14,7 @@ import java.nio.file.Paths;
 import static org.junit.Assert.*;
 
 public class AppTest {
-//    @Test public void testRecentQuotesEmpty() {
-//        RecentQuote quotesTest = new RecentQuote("", "");
-//        assertEquals(" - ", quotesTest.toString());
-//    }
+
 
     @Test public void testRecentQuotesOne() throws IOException {
         Gson gson = new Gson();
@@ -38,9 +35,9 @@ public class AppTest {
         assertTrue("Error, random is too high", 139 >= random);
     }
 
-//    @Test public void returnQuoteTest() throws Exception{
+//    @Test public void returnFromAPITest() throws Exception{
 //        App newQuoteTest = new App();
-//
+//        assertEquals("This is the first character", '{', );
 //
 //    }
 }
