@@ -72,18 +72,16 @@ public class App {
                 Gson g = new Gson();
                 StarWarsQuote q = g.fromJson(testing, StarWarsQuote.class);
                 q.normalizeQuote();
-
-                Reader quoteReader = Files.newBufferedReader(Paths.get("src/main/resources/recentQuotes.json"));
+                System.out.println(q);
+                Reader quoteReader = new FileReader("src/main/resources/recentQuotes.json");
                 RecentQuote[] numQuotes = g.fromJson(quoteReader, RecentQuote[].class);
+
                 ArrayList<RecentQuote> array = new ArrayList<>(Arrays.asList(numQuotes));
+
                 array.add(q);
-
-               // System.out.println(q);
-
-                FileWriter infoFileWriter = new FileWriter("src/main/resources/recentQuotes.json");
-                g.toJson(array, infoFileWriter);
+                FileWriter infoFileWriter = new FileWriter("src/main/resources/recentQuotes.json", false);
+                g.toJson(array.toArray(), infoFileWriter);
                 infoFileWriter.close();
-
 
             }
         } catch (Exception ex) {

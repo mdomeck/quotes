@@ -4,8 +4,9 @@ public class StarWarsQuote extends RecentQuote {
 
     String starWarsQuote;
 
-    public StarWarsQuote(String author, String text) {
+    public StarWarsQuote(String author, String text, String starWarsQuote) {
         super(author, text);
+        this.starWarsQuote = starWarsQuote;
 
 
     }
