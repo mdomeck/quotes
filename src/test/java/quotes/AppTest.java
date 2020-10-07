@@ -6,6 +6,7 @@ package quotes;
 import com.google.gson.Gson;
 import org.junit.Test;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -18,7 +19,7 @@ public class AppTest {
 
     @Test public void testRecentQuotesOne() throws IOException {
         Gson gson = new Gson();
-        Reader quoteReader = Files.newBufferedReader(Paths.get("src/main/resources/recentQuotes.json"));
+        Reader quoteReader = new FileReader("src/main/resources/recentQuotes.json");
         RecentQuote[] numQuotes = gson.fromJson(quoteReader, RecentQuote[].class);
         String marilynQuote = "I am good, but not an angel. I do sin, but I am not the devil. I am just a small girl in a big world trying to find someone to love.";
         System.out.println(marilynQuote);
@@ -35,9 +36,10 @@ public class AppTest {
         assertTrue("Error, random is too high", 139 >= random);
     }
 
-//    @Test public void returnFromAPITest() throws Exception{
-//        App newQuoteTest = new App();
-//        assertEquals("This is the first character", '{', );
-//
-//    }
+    @Test public void returnFromAPITest() throws Exception{
+        App newQuoteTest = new App();
+
+        assertEquals("This is the first character", '{', newQuoteTest.toString());
+
+    }
 }
