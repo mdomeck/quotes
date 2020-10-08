@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class App {
@@ -49,6 +50,7 @@ public class App {
                     Reader quoteReader = Files.newBufferedReader(Paths.get("src/main/resources/recentQuotes.json"));
                     RecentQuote[] numQuotes = gson.fromJson(quoteReader, RecentQuote[].class);
                     System.out.println(quotes.stringify(getRandomNumber(0, 138), numQuotes));
+                    //return quotes.stringify(getRandomNumber(0, 138), numQuotes);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -61,7 +63,7 @@ public class App {
 
                 while (oneLine != null) {
                     entireStringFromResponse.append(oneLine);
-                   oneLine = input.readLine();
+                    oneLine = input.readLine();
                 }
                 input.close();
 
@@ -70,19 +72,25 @@ public class App {
 
                 Gson g = new Gson();
                 StarWarsQuote q = g.fromJson(testing, StarWarsQuote.class);
-
+                q.normalizeQuote();
                 System.out.println(q);
+                Reader quoteReader = new FileReader("src/main/resources/recentQuotes.json");
+                RecentQuote[] numQuotes = g.fromJson(quoteReader, RecentQuote[].class);
 
+                ArrayList<RecentQuote> array = new ArrayList<>(Arrays.asList(numQuotes));
 
-                FileWriter infoFileWriter = new FileWriter("src/main/resources/recentQuotes.json", true);
-                g.toJson(q, infoFileWriter);
+                array.add(q);
+                FileWriter infoFileWriter = new FileWriter("src/main/resources/recentQuotes.json", false);
+                g.toJson(array.toArray(), infoFileWriter);
                 infoFileWriter.close();
-
+                //System.out.println(q.toString());
+                //return q.toString();
 
             }
         } catch (Exception ex) {
-        System.out.println(ex);
+            System.out.println(ex);
         }
+       // return "";
     }
 
 
